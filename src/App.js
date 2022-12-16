@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
+import i1_1_1 from './1-1-1.png';
 
 export default function App() {
   const getInitialLabel = () => {
@@ -54,9 +55,21 @@ export default function App() {
     else {
       output3 = 3;
     }
-    var path = './'+output1.toString()+'-'+output2.toString()+'-'+output3.toString()+'.png'
-    console.log(path)
-    document.getElementById('imagesDiv').innerHTML='<img src = {{path}}></img>'
+    var path
+    // if (output1 === 1 && output2 === 1 && output3 === 1) {
+    //   // path = 'https://drive.google.com/file/d/1JOzwQSqvZ9b7vQ3eVuxG-XNh0jNtL6NK/view?usp=share_link'
+    //   path = '3-3-3.png'
+    //   console.log('here')
+    // }
+    path = i1_1_1
+    // var a = './'+output1.toString()+'-'+output2.toString()+'-'+output3.toString()+'.png'
+    // console.log(a)
+    // var img1 = <img src={path} />
+    var img1 = document.createElement('img')
+    img1.src = path
+    var showDiv = document.getElementById('imagesDiv')
+    showDiv.innerHTML = ''
+    showDiv.appendChild(img1)
   }
 
   
