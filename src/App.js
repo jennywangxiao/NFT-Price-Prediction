@@ -113,7 +113,7 @@ export default function App() {
         color: 'hsl(0, 0%, 40%)',
         display: 'inline-block',
         fontSize: '20px',
-        marginTop: '3em',
+        marginTop: '2em',
         marginLeft: '5em',
         innerHeight: '25em',
         lineHeight: '1.5'
@@ -203,7 +203,6 @@ export default function App() {
 
       <div id='imagesDiv' style={{
             paddingLeft: '1em',
-            paddingTop: '0.6em',
           }}>
       </div>
 
@@ -213,7 +212,7 @@ export default function App() {
       backgroundColor: 'rgba(0, 0, 0, 0.05)',
       textAlign: 'center',
       height: '2em',
-      marginTop:'2em',
+      marginTop:'4em',
       fontStyle: 'italic',
       }}>
       All rights reserved @2022 NFT-Price-Prediction
