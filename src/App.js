@@ -14,16 +14,21 @@ export default function App() {
     const trainingInterval = '30';
     return trainingInterval;
   };
+  const getTrainCols = () => {
+    const trainCols = 'AverageUSD';
+    return trainCols;
+  };
 
   const [nftLabel, setNftLabel] = useState(getInitialLabel)
   const [model, setModel] = useState(getInitialModel)
   const [trainingInterval, setTrainingInterval] = useState(getInitialInterval)
+  const [trainCols, setTrainCols] = useState(getTrainCols)
 
   useEffect(() => {
-    handleDisplay(nftLabel,model,trainingInterval)
-  },[nftLabel,model,trainingInterval])
+    handleDisplay(nftLabel,model,trainingInterval, trainCols)
+  },[nftLabel,model,trainingInterval, trainCols])
 
-  const handleDisplay = (nftLabel,model,trainingInterval) => {
+  const handleDisplay = (nftLabel,model,trainingInterval, trainCols) => {
     let output1;
     if (nftLabel === 'cryptopunk') {
       output1 = 'cryptopunk';
@@ -34,16 +39,18 @@ export default function App() {
     else {
       output1 = 'bayc';
     }
+
     let output2;
     if (model === 'lstm') {
-      output2 = 'LSTM';
+      output2 = 'baseline';
     }
     else if (model === 'attention') {
-      output2 = 'Attention';
+      output2 = 'attention';
     } 
     else {
-      output2 = 'BiLSTM';
+      output2 = 'bidirection';
     }
+
     let output3;
     if (trainingInterval === '30') {
       output3 = '30';
@@ -54,11 +61,15 @@ export default function App() {
     else {
       output3 = '90';
     }
+
+    let output4;
+    output4 = trainCols;
+
     var path
     // var a = './'+output1.toString()+'-'+output2.toString()+'-'+output3.toString()+'.png'
     // var img1 = <img src={path} />
     // path = require("./1-1-1.png")
-    path = require('./figures/'+output1.toString()+'/AverageUSD/'+output2.toString()+'_'+output3.toString()+'.png')
+    path = require('./figures/'+output1.toString()+'/'+output4.toString()+'/'+output2.toString()+'_'+output3.toString()+'.png')
     console.log(path)
     var img1 = document.createElement('img')
     img1.src = path
@@ -78,6 +89,10 @@ export default function App() {
     setTrainingInterval(e.target.value);
   };
 
+  const handleTrainCols = (e) => {
+    setTrainCols(e.target.value);
+  };
+
   return (
     <div>
       <header className='header'
@@ -92,6 +107,7 @@ export default function App() {
       }}>
         Non-Fungible Token Price Prediction
       </header>
+
       <div className='Home'
       style={{
         color: 'hsl(0, 0%, 40%)',
@@ -124,6 +140,7 @@ export default function App() {
             </select>
           </div>
         </div>
+
         <div>
           <div style={{
             paddingLeft: '1em',
@@ -143,6 +160,7 @@ export default function App() {
             </select>
           </div>
         </div>
+        
         <div>
           <div style={{
             paddingLeft: '1em',
@@ -163,12 +181,33 @@ export default function App() {
           </div>
         </div>
 
+        <div>
+          <div style={{
+            paddingLeft: '1em',
+            paddingTop: '0.6em',
+            width: '8em',
+            display: 'inline-block'
+          }}>
+            Training Columns:  
+            </div>
+          <div style={{
+            display: 'inline-block'
+          }}>
+            <select value={trainCols} onChange={handleTrainCols}>
+              <option value='AverageUSD'>Average USD</option>
+              <option value="AverageUSD_Numberofsales">Average USD + Number of Sales</option>
+              <option value="Numberofsales_SalesUSD_AverageUSD_Activemarketwallets_Uniquebuyers">All Columns</option>
+            </select>
+          </div>
+        </div>
+
       <div id='imagesDiv' style={{
             paddingLeft: '1em',
             paddingTop: '0.6em',
           }}>
       </div>
-      
+
+          
     </div>
     <footer id='footer' style={{ 
       backgroundColor: 'rgba(0, 0, 0, 0.05)',

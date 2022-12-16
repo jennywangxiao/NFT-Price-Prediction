@@ -13,6 +13,10 @@
   font-family: "Great Vibes", cursive;
 }
 
+.image-container {
+  float: right;
+  width: 300px;
+}
 
 #footer{  
   position:absolute;  
@@ -20,3 +24,18 @@
   padding:10px0;  
   width:100%;  
  }
+
+select {
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+select:hover {
+  background-color: #f1f1f2;
+}
