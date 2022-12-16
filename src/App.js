@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import i1_1_1 from './1-1-1.png';
 
 export default function App() {
   const getInitialLabel = () => {
@@ -27,44 +26,40 @@ export default function App() {
   const handleDisplay = (nftLabel,model,trainingInterval) => {
     let output1;
     if (nftLabel === 'cryptopunk') {
-      output1 = 1;
+      output1 = 'cryptopunk';
     }
     else if (nftLabel === 'artblocks') {
-      output1 = 2;
+      output1 = 'artblocks';
     } 
     else {
-      output1 = 3;
+      output1 = 'bayc';
     }
     let output2;
     if (model === 'lstm') {
-      output2 = 1;
+      output2 = 'LSTM';
     }
     else if (model === 'attention') {
-      output2 = 2;
+      output2 = 'Attention';
     } 
     else {
-      output2 = 3;
+      output2 = 'BiLSTM';
     }
     let output3;
     if (trainingInterval === '30') {
-      output3 = 1;
+      output3 = '30';
     }
     else if (trainingInterval === '60') {
-      output3 = 2;
+      output3 = '60';
     } 
     else {
-      output3 = 3;
+      output3 = '90';
     }
     var path
-    // if (output1 === 1 && output2 === 1 && output3 === 1) {
-    //   // path = 'https://drive.google.com/file/d/1JOzwQSqvZ9b7vQ3eVuxG-XNh0jNtL6NK/view?usp=share_link'
-    //   path = '3-3-3.png'
-    //   console.log('here')
-    // }
-    path = i1_1_1
     // var a = './'+output1.toString()+'-'+output2.toString()+'-'+output3.toString()+'.png'
-    // console.log(a)
     // var img1 = <img src={path} />
+    // path = require("./1-1-1.png")
+    path = require('./figures/'+output1.toString()+'/AverageUSD/'+output2.toString()+'_'+output3.toString()+'.png')
+    console.log(path)
     var img1 = document.createElement('img')
     img1.src = path
     var showDiv = document.getElementById('imagesDiv')
